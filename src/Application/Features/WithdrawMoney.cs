@@ -1,23 +1,20 @@
-﻿using Application.DataAccess;
-using Application.Domain.Services;
+﻿using Application.Domain.Services;
 using System;
 
 namespace Application.Features
 {
     public class WithdrawMoney
     {
-        private IAccountRepository accountRepository;
-        private INotificationService notificationService;
+        private IWithdrawService withdrawService;
 
-        public WithdrawMoney(IAccountRepository accountRepository, INotificationService notificationService)
+        public WithdrawMoney(IWithdrawService withdrawService)
         {
-            this.accountRepository = accountRepository;
-            this.notificationService = notificationService;
+            this.withdrawService = withdrawService;
         }
 
         public void Execute(Guid fromAccountId, decimal amount)
         {
-            // TODO:
+            this.withdrawService.WithdrawMoney(fromAccountId, amount);
         }
     }
 }
